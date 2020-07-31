@@ -1,6 +1,6 @@
 var express = require('express');
 var path = require('path');
-
+const serverless = require('serverless-http');
 var app = express();
 
 // view engine setup
@@ -35,6 +35,7 @@ router.get('/faq', function (request, response) {
 
 app.use('/', router);
 
-app.listen(PORT, function () {
-  console.log('Listening on port ' + PORT);
-});
+// app.listen(PORT, function () {
+//   console.log('Listening on port ' + PORT);
+// });
+module.exports.handler = serverless(app);
